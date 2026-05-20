@@ -1,0 +1,21 @@
+1 Average Availability Per Day = DIVIDE([Total Availability], [Total Number Of Days])
+
+2 Average Demand Per Day = DIVIDE([Total Demand], [Total Number Of Days])
+
+3 Total Availability = SUM('Deman/availability data'[availability])
+
+4 Total Number Of Days = DISTINCTCOUNT('Deman/availability data'[Order_Date_DD_MM_YYYY]. [Date])
+
+5 Total Supply Shortage = [Total Demand]-[Total Availability]
+
+6 Total Profit = SUMX(FILTER('Deman/availability data', 'Deman/availability data' [LOSS/PROFIT]>0), 'Deman/availability data'[LOSS/PROFIT]*'Deman/availability
+data'[unit_price])
+
+7 Total Loss = SUMX(FILTER( 'Deman/availability data', 'Deman/availability data'[LOSS/PROFIT]<0), 'Deman/availability data' [LOSS/PROFIT]*'Deman/availability
+data'[unit_price])
+
+8 Average loss per day = DIVIDE([Total Loss], [Total Number Of Days])
+
+9 LOSS/PROFIT = 'Deman/availability data' [availability]- 'Deman/availability data' [demand]
+
+10 Average loss per day = DIVIDE([Total Loss], [Total Number Of Days])
